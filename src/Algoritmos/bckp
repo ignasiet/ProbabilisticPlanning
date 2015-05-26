@@ -1,0 +1,26 @@
+public void iLAOTrialold(Estado s){
+		int visited = 0;
+		//z.clear();
+		while(!s.isGoal && !s.isStacked){
+			//Being visited
+			s.isStacked = true;
+			//Count states visited
+			visited++;
+			//pick best action and update hash
+			Update(s);
+			//Print the updated values of V[initState]
+			if(s.isInitial){
+				plotValues();
+			}			
+			//s = pickBestNextState(s.greedyAction);			
+			//If not in the z list
+			if(!z.contains(s)){
+				z.add(s);
+			}
+		}		
+		if(!convergenceTest()){
+			z.add(sInicial);
+			iLAOTrialold(sInicial);
+			
+		}
+	}
