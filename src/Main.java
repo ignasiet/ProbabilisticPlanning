@@ -32,12 +32,12 @@ public class Main {
 		//Criamos as instancias dos estados e das açoes:
 		//System.out.println("Introduzir a localizaçao do arquivo com as instancias: ");
 
-		File f = new File(".");
+		File f = new File(".\\DomainProblems\\");
 		if (f.isDirectory()) {
 			for (File f2 : f.listFiles())
 				if (f2.getName().endsWith(".txt")) {
 					problema = new ProblemDefinition();
-					//System.out.println("Loading: " + f2);
+					System.out.println("Loading: " + f2);
 					//rddl.addOtherRDDL(parser.parse(f2));
 
 					//rddl.addOtherRDDL(parser.parse(f));
@@ -116,7 +116,8 @@ public class Main {
 					}
 					//printResults(problema);
 					problema.initActions();
-					problema.prepareOutput(f2.getName().replace(".\\", "").replace(".txt", "-result.txt"));
+					String problem_fileName = ".\\Results\\" + f2.getName();
+					problema.prepareOutput(problem_fileName.replace(".\\DomainProblems\\", ".\\Results\\").replace(".txt", "-result.txt"));
 					long timeStart = System.currentTimeMillis();
 					//LRTDP lrtdp = new LRTDP(problema);
 					iLAO ilao = new iLAO(problema);
